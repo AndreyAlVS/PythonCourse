@@ -8,3 +8,9 @@
 # 100, а также если он кратен 400.
 # Input: 2016
 # Output: YES
+
+year = int(input('Введите год: '))
+if year % 4 == 0 and year % 100 != 0 and year % 4 == 0:
+    print('Yes')
+else:
+    print('No')

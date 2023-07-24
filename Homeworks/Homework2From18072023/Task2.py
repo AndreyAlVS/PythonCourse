@@ -5,3 +5,21 @@
 # Для этого Петя делает две подсказки.
 # Он называет сумму этих чисел S и их произведение P.
 # Помогите Кате отгадать задуманные Петей числа.
+
+
+from random import randint
+num1 = randint(0, 1001)
+print(f'Первое число загаданное Петей равно: {num1}')
+num2 = randint(0, 1001)
+print(f'Второе число загаданное Петей равно: {num2}')
+summ = num1 + num2
+prod = num1 * num2
+
+for i in range(0, 1001):
+    for j in range(0, 1001):
+        if i + j == summ and i * j == prod:
+            answer1 = i
+            answer2 = j
+
+print(f'Первое число отгаданное Катей равно: {answer1}')
+print(f'Второе число отгаданное Катей равно: {answer2}')

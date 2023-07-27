@@ -60,5 +60,5 @@ print('Snoop Dogg одобряет' + '🚭')
 #     harvest = list1[bush - 1] + list1[bush - 2] + list1[bush]
 #
 #
-# print(harvest)
+# print(harvest
 # print('Snoop Dogg happy' + '🚭')

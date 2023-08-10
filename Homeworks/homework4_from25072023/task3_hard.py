@@ -6,3 +6,21 @@
 # Избегайте магических чисел
 # Добавьте аннотацию типов где это возможно
 # Используйте функции
+
+num = int(input('Insert int num: '))
+
+def binary(num):
+    bin = ''
+    while num != 0:
+        rest = num % 2
+        bin += str(rest)
+        num = num // 2
+    return bin
+
+def reversed(binary):
+    res = (reversed(binary))
+    return res
+
+
+binary(num)
+print(reversed(bin))

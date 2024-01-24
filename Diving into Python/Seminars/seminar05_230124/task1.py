@@ -12,3 +12,4 @@ new_dict = {}
 new_dict[s[1]] = s[0]
 new_dict[s[2]] = s[3]
 print(new_dict)
+print()

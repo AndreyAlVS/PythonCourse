@@ -6,10 +6,14 @@
 # ✔четвертое и все возможные последующие числа
 #  хранятся в кортеже как значения второго ключа.
 
+s = '1/2/3/4/7/8/9'.split('/')
 
-s = '1/2/3/4'.split('/')
-new_dict = {}
-new_dict[s[1]] = s[0]
-new_dict[s[2]] = s[3]
-print(new_dict)
-print()
+
+def dictionary(lst: list) -> dict:
+    new_dict = dict()
+    new_dict[lst[1]] = lst[0]
+    new_dict[lst[2]] = lst[3::]
+    return new_dict
+
+
+print(dictionary(s))

@@ -1,4 +1,7 @@
-s = input().split()
-square = [int(i) ** 2 for i in s if int(i) % 2 == 0]
-square_without_4 = [i for i in square if i % 10 != 4]
-print(*square_without_4)
+keywords = ['False', 'True', 'None', 'and', 'with', 'as', 'assert', 'break', 'class', 'continue', 'def', 'del', 'elif',
+            'else', 'except', 'finally', 'try', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda',
+            'nonlocal', 'not', 'or', 'pass', 'raise', 'return', 'while', 'yield']
+
+lengths = [m.count(index) for m in keywords]
+
+print(lengths)

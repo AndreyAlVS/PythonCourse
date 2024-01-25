@@ -1,7 +1,8 @@
-keywords = ['False', 'True', 'None', 'and', 'with', 'as', 'assert', 'break', 'class', 'continue', 'def', 'del', 'elif',
-            'else', 'except', 'finally', 'try', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda',
-            'nonlocal', 'not', 'or', 'pass', 'raise', 'return', 'while', 'yield']
+matrix = [[1, 2, 3],
+          [4, 5, 6],
+          [7, 8, 9]]
 
-lengths = [m.count(index) for m in keywords]
+transposed_matrix = zip(*matrix)
+res = [list(row) for row in transposed_matrix]
 
-print(lengths)
+print(res)

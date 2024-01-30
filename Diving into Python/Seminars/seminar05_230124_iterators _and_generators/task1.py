@@ -6,14 +6,23 @@
 # ✔четвертое и все возможные последующие числа
 #  хранятся в кортеже как значения второго ключа.
 
-s = '1/2/3/4/7/8/9'.split('/')
+# моё решение:
 
+# s = '1/2/3/4/7/8/9'.split('/')
+#
+#
+# def dictionary(lst: list) -> dict:
+#     new_dict = dict()
+#     new_dict[lst[1]] = lst[0]
+#     new_dict[lst[2]] = lst[3::]
+#     return new_dict
+#
+#
+# print(dictionary(s))
 
-def dictionary(lst: list) -> dict:
-    new_dict = dict()
-    new_dict[lst[1]] = lst[0]
-    new_dict[lst[2]] = lst[3::]
-    return new_dict
+# решение на семинаре:
 
-
-print(dictionary(s))
+numbers = '1/2/3/4/5/6/7/8/9'
+first, second, third, *forth = map(int, numbers.split('/'))
+numb_dict = {second: first, third: tuple(forth)}
+print(numb_dict)

@@ -34,8 +34,12 @@ def pseudo_names(count_str: int, file_name: str) -> None:
         file.writelines([_name_generator() + '\n' for _ in range(count_str)])
 
 
-def my_readline():
-    pass
+def my_readline(file):
+    line = file.readline()
+    if line == '':
+        file.seek(0)
+        return file.readline()
+    return line
 
 
 def write_with_join(names_source, numbers, result_name) -> None:
@@ -46,11 +50,9 @@ def write_with_join(names_source, numbers, result_name) -> None:
         len_numb = len(numb.read().split('\n'))
         max_len = max(len_name, len_numb)
 
-        for i in range(max_len):
-            read_numb = numb.readline()
-            read_name = name.readline()
-            new_name = name.readline()
-            new_int, new_float = numb.readline().replace('\n', '').split('|')
+        for i in range(max_len - 1):
+            new_name = my_readline(name).replace('\n', '')
+            new_int, new_float = my_readline(numb).replace('\n', '').split('|')
             new_numb = int(new_int) * float(new_float)
             if new_numb < 0:
                 res.write(f'{new_name.lower()} {abs(new_numb)}\n')
@@ -58,7 +60,6 @@ def write_with_join(names_source, numbers, result_name) -> None:
                 res.write(f'{new_name.upper()} {int(new_numb)}\n')
 
 
-
-write_numbers(3, '12.txt')
-pseudo_names(10, 'names.txt')
+write_numbers(5, '12.txt')
+pseudo_names(5, 'names.txt')
 write_with_join('12.txt', 'names.txt', 'result.txt')

@@ -31,4 +31,4 @@ def write_file(
                               for _ in range(randint(min_bytes, max_bytes))]))
 
 
-write_file(count_files=3)
+write_file(ext='.mov', count_files=10)

@@ -1,13 +1,8 @@
-# объявление функции
+matrix = [[1, 2, 3],
+          [4, 5, 6],
+          [7, 8, 9]]
 
-def merge(num):
-    for _ in range(num):
-        s = [input().split() for _ in range(num)]
-        listx = []
-        listx = listx.append(s)
+transposed_matrix = zip(*matrix)
+res = [list(row) for row in transposed_matrix]
 
-        return listx
-
-
-n = int(input())
-print(merge(n))
+print(res)

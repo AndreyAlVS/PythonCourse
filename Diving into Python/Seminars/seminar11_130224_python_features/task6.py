@@ -25,7 +25,7 @@ class Rectangle:
 
     def __sub__(self, other):
         new_perimetr = abs(self.perimeter() - other.perimeter())
-        new_length = abs(self.leng - other.leng)
+        new_length = abs(self.leng - other._leng)
         new_width = new_perimetr / 2 - new_length
         if new_width < 0:
             return ValueError('Вычитание данных прямоугольника невозможно')

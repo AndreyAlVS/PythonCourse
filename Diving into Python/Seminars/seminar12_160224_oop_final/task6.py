@@ -71,27 +71,11 @@ class Rectangle:
             return ValueError('Вычитание данных прямоугольника невозможно')
         return Rectangle(new_length, new_width)
 
-    def __eq__(self, other):
-        return self.area() == other.area()
-
-    def __gt__(self, other):
-        return self.area() > other.area()
-
-    def __ge__(self, other):
-        return self.area() >= other.area()
-
 
 if __name__ == '__main__':
     p1 = Rectangle(4, 8)
     p2 = Rectangle(3, 4)
     rectangle = Rectangle(10)
-    # print(rectangle.perimeter())
-    # print(rectangle.area())
-    # print(p1 + p2)
-    # print(p1 - p2)
-    # print(p1 == p2)
-    # print(p1 < p2)
-    # print(p1 <= p2)
     print(p1.leng)
     p1.leng = 10
     print(p1.leng)

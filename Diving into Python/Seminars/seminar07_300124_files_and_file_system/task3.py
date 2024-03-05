@@ -60,6 +60,6 @@ def write_with_join(names_source, numbers, result_name) -> None:
                 res.write(f'{new_name.upper()} {int(new_numb)}\n')
 
 
-write_numbers(5, '12.txt')
-pseudo_names(5, 'names.txt')
+write_numbers(6, '12.txt')
+pseudo_names(6, 'names.txt')
 write_with_join('12.txt', 'names.txt', 'result.txt')

@@ -12,14 +12,13 @@
         <th> Возраст</th>
         <th> Средний балл</th>
         {% for user in users %}
-    <tr>
-        <td>{{user.name}}</td>
-        <td>{{user.Last_name}}</td>
-        <td>{{user.age}}</td>
-        <td>{{user.average_mark}}</td>
-    </tr>
-    {% endfor %}
-
+            <tr>
+                <td>{{user.name}}</td>
+                <td>{{user.Last_name}}</td>
+                <td>{{user.age}}</td>
+                <td>{{user.average_mark}}</td>
+            </tr>
+        {% endfor %}
     </tr>
 </table>
 </body>

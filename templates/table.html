@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border="solid">
+    <tr>
+        <th> Имя</th>
+        <th> Фамилия</th>
+        <th> Возраст</th>
+        <th> Средний балл</th>
+        {% for user in users %}
+    <tr>
+        <td>{{user.name}}</td>
+        <td>{{user.Last_name}}</td>
+        <td>{{user.age}}</td>
+        <td>{{user.average_mark}}</td>
+    </tr>
+    {% endfor %}
+
+    </tr>
+</table>
+</body>
+</html>

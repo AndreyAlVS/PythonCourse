@@ -20,27 +20,25 @@ def index():
 
 @app.route('/foots/')
 def foots():
-    return render_template('foots.html', title='foots')
+    return render_template('foots.html', title='foots', description=description,
+                           something_more=something_more)
 
 
 @app.route('/hats/')
 def hats():
-    return render_template('hats.html', title='hats')
+    return render_template('hats.html', title='hats', description=description,
+                           something_more=something_more)
 
 
 @app.route('/jackets/')
 def jackets():
-    return render_template('jackets.html', title='jackets')
+    return render_template('jackets.html', title='jackets', description=description,
+                           something_more=something_more)
 
 
 @app.route('/pos/')
 def pos():
-    return render_template('pos.html', title='pos')
-
-
-@app.route('/test/')
-def test():
-    return render_template('test.html', description=description,
+    return render_template('pos.html', title='piece of shit', description=description,
                            something_more=something_more)
 
 

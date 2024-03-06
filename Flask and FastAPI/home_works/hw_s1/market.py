@@ -14,7 +14,7 @@ something_more = ['blablabla', 'blabla', 'bla']
 
 @app.route('/')
 def index():
-    return render_template('index.html', title='main', description=description,
+    return render_template('index.html', title='main menu', description=description,
                            something_more=something_more)
 
 
@@ -25,20 +25,23 @@ def foots():
 
 @app.route('/hats/')
 def hats():
-    print(url_for('hats'))
     return render_template('hats.html', title='hats')
 
 
 @app.route('/jackets/')
 def jackets():
-    print(url_for('jackets'))
     return render_template('jackets.html', title='jackets')
 
 
 @app.route('/pos/')
 def pos():
-    print(url_for('pos'))
     return render_template('pos.html', title='pos')
+
+
+@app.route('/test/')
+def test():
+    return render_template('test.html', description=description,
+                           something_more=something_more)
 
 
 if __name__ == '__main__':

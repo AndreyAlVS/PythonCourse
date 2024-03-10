@@ -2,7 +2,7 @@ import os
 import pytest
 import shutil
 from collections import Counter
-from file_info import list_directory_contents
+from task1 import list_directory_contents
 
 
 @pytest.fixture

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="row">
+    {% for st in student %}
+        <p>
+            Имя : {{ st.name }}<br>
+            Фамилия: {{ st.last_name }}<br>
+            Возраст: {{st.age}}<br>
+            Пол: {{st.gender}}<br>
+            Группа: {{st.group}}<br>
+            Id факультета: {{st.fags.fag_name}}<br>
+        </p>
+    {% endfor %}
+</div>
+</body>
+</html>

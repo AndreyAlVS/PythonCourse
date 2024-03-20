@@ -20,7 +20,7 @@ def data():
 def all_users():
     users = User.query.all()
     context = {'users': users}
-    return render_template('users.html', **context)
+    return render_template('index.html', **context)
 
 
 if __name__ == '__main__':

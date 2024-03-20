@@ -22,14 +22,14 @@ def data():
 def all_users():
     users = User.query.all()
     context = {'users': users}
-    return render_template('users.html', **context)
+    return render_template('index.html', **context)
 
 
 @app.route('/users/<username>/')
 def users_by_username(username):
     users = User.query.filter(User.username == username).all()
     context = {'users': users}
-    return render_template('users.html', **context)
+    return render_template('index.html', **context)
 
 
 @app.route('/posts/author/<int:user_id>/')

@@ -17,7 +17,7 @@
 # пользователей.
 from datetime import date
 from fastapi import FastAPI
-from pydantic import BaseModel, Field, EmailStr
+from pydantic import BaseModel, Field, EmailStr, constr
 import sqlite3
 
 app = FastAPI()
@@ -25,11 +25,11 @@ app = FastAPI()
 
 class User(BaseModel):
     id: int
-    name: str
-    surname: str
+    name: constr(min_length=2) = Field(..., description="Name must be at least 2 characters")
+    surname: constr(min_length=2) = Field(..., description="Surname must be at least 2 characters")
     birthdate: date = Field(..., description="Date of birth in the format 'YYYY-MM-DD'")
     email: EmailStr = Field(..., description="Email in the format 'str@str.str'")
-    address: str
+    address: constr(min_length=5) = Field(..., description="Address must be at least 5 characters")
 
 
 conn = sqlite3.connect('users.db')

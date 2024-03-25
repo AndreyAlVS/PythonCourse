@@ -1,10 +1,14 @@
-n = 5
-k = 2
-l = []
+A = 61_570_068
+B = 1_617_462_603
+plus = []
+minus = []
 
-for i in range(1, n + 1):
-    l.append(i)
-for _ in l:
-    while len(l) != 1:
-        l.remove(l[k - 1])
-print(*l)
+for i in range(A, B + 1):
+    if i % 2 == 0:
+        plus.append(i)
+    else:
+        minus.append(i)
+
+res = sum(plus) - sum(minus)
+
+print(res)

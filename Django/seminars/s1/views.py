@@ -2,7 +2,8 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from random import choice, randint
 import logging
-
+from models import Games
+import random
 logger = logging.getLogger(__name__)
 
 
@@ -23,10 +24,16 @@ def coin(request):
         return HttpResponse(f'Монетка не может встать на {result}, перекиньте')
 
 
-
 def cube(request):
     return HttpResponse(f'На кубике выпало число {randint(1, 6)}')
 
 
 def number(request):
     return HttpResponse(f'Выпало число {randint(0, 100)}')
+
+
+def game(request):
+    side = random.choice(["orel", "reshka"])
+    game = Games(side=side,)
+    game.save()
+    return HttpResponse(game)

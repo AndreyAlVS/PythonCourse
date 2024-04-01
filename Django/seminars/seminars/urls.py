@@ -24,4 +24,6 @@ urlpatterns = [
     path('cube/', include('s1.urls')),
     path('number/', include('s1.urls')),
     path('game/', include('s1.urls')),
+    path('stat/', include('s1.urls')),
+    path('authors/', include('s1.urls')),
 ]

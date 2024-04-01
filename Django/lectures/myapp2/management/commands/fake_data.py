@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from Djando.myapp2.models import Author, Post
+from myapp2.models import Author, Post
 
 
 class Command(BaseCommand):

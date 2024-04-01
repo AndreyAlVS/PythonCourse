@@ -2,9 +2,11 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from random import choice, randint
 import logging
-from models import Games
+from s1.models import Games, Author
 import random
+
 logger = logging.getLogger(__name__)
+from datetime import date
 
 
 # Create your views here.
@@ -34,6 +36,26 @@ def number(request):
 
 def game(request):
     side = random.choice(["orel", "reshka"])
-    game = Games(side=side,)
+    game = Games(side=side, )
     game.save()
     return HttpResponse(game)
+
+
+def statistics(request):
+    data = Games.stat_game()
+    return HttpResponse(f'{data}')
+
+
+def create_authors(request):
+    result = []
+    for i in range(10):
+        author = Author(
+            name=f'Name{i}',
+            lastname=f'Lastname{i}',
+            email=f'example{i}@mail.ru',
+            biography=f'biography{i}',
+            birthday=date.today()
+        )
+        author.save()
+        result.append(author.fullname())
+        return HttpResponse(f'{result}')

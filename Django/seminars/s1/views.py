@@ -12,26 +12,45 @@ from datetime import date
 # Create your views here.
 
 def index(request):
+    context = {
+        'title': 'index',
+        'message': 'Its a index page',
+    }
     logger.info('Index page accessed')
-    return HttpResponse('Wellcome to seminar 1 "Introduction to Django"')
+    # return HttpResponse('Wellcome to seminar 1 "Introduction to Django"')
+    return render(request, 's1/index.html', context)
 
 
-def coin(request):
-    result = choice(['орёл', 'решка', 'ребро'])
-    if result == 'орёл' or 'решка':
-        logger.info(f'На монетке выпал {result}')
-        return HttpResponse(f'На монетке выпал {result}')
-    else:
-        logger.exception(f'Error, монетка встала на {result}')
-        return HttpResponse(f'Монетка не может встать на {result}, перекиньте')
+def about(request):
+    context = {
+        'title': 'About',
+        'message': 'Its a about page',
+    }
+    return render(request, 's1/about.html', context)
 
 
-def cube(request):
-    return HttpResponse(f'На кубике выпало число {randint(1, 6)}')
+def coin(request, num):
+    result = [choice(['орёл', 'решка', 'ребро']) for _ in range(num)]
+    context = {'result': result}
+    # if result == 'орёл' or 'решка':
+    #     logger.info(f'На монетке выпал {result}')
+    #     return HttpResponse(f'На монетке выпал {result}')
+    # else:
+    #     logger.exception(f'Error, монетка встала на {result}')
+    #     return HttpResponse(f'Монетка не может встать на {result}, перекиньте')
+    return render(request, 's1/games.html', context)
 
 
-def number(request):
-    return HttpResponse(f'Выпало число {randint(0, 100)}')
+def cube(request, num):
+    result = [randint(1, 6) for _ in range(num)]
+    context = {'result': result}
+    return render(request, 's1/games.html', context)
+
+
+def number(request, num):
+    result = [randint(1, 100) for _ in range(num)]
+    context = {'result': result}
+    return render(request, 's1/games.html', context)
 
 
 def game(request):

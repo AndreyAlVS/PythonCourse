@@ -5,6 +5,7 @@
       <sourceFolder url="file://$MODULE_DIR$/Django/lectures" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Django/seminars" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Django/homework/homework" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Django/homework/myshop" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/.folder" />
       <excludeFolder url="file://$MODULE_DIR$/venv" />
     </content>

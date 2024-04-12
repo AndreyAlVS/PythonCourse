@@ -6,8 +6,6 @@ from django.utils import timezone
 from datetime import timedelta
 from myshop.tables import ProductTable
 
-# Create your views here.
-
 logger = logging.getLogger(__name__)
 
 
@@ -39,18 +37,11 @@ def orders_view(request):
 
 
 def client_orders(request, client_id):
-    # Получение объекта клиента по его идентификатору
     client = get_object_or_404(Client, pk=client_id)
-
-    # Определение временных интервалов для фильтрации заказов
     days_7_ago = timezone.now() - timedelta(days=7)
     days_30_ago = timezone.now() - timedelta(days=30)
     days_365_ago = timezone.now() - timedelta(days=365)
-
-    # Получение всех заказов клиента за последние 365 дней
     orders = client.order_set.filter(date_ordered__gte=days_365_ago)
-
-    # Передача данных в шаблон
     return render(request, 'myshop/client_orders.html', {
         'client': client,
         'orders': orders,

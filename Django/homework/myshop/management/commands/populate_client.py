@@ -1,5 +1,3 @@
-# myapp/management/commands/populate_clients.py
-import random
 from faker import Faker
 from django.core.management.base import BaseCommand
 from myshop.models import Client
@@ -15,10 +13,10 @@ class Command(BaseCommand):
         for _ in range(50):
             # Создание клиента
             Client.objects.create(
-                name=fake.name(),  # Генерация случайного имени
-                email=fake.email(),  # Генерация случайного email
-                phone_number=fake.phone_number(),  # Генерация случайного номера телефона
-                address=fake.address(),  # Генерация случайного адреса
+                name=fake.name(),
+                email=fake.email(),
+                phone_number=fake.phone_number(),
+                address=fake.address(),
             )
 
         self.stdout.write(self.style.SUCCESS('Clients populated successfully!'))

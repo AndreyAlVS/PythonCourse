@@ -8,7 +8,6 @@
 <body>
 <h1>Customer Orders</h1>
 <ul>
-    <!-- Цикл для вывода информации о каждом заказе -->
     {% for order in orders %}
     <li>
         <h2>Order #{{ order.order_number }}</h2>
@@ -16,7 +15,6 @@
         <p>Total Price: ${{ order.total_price }}</p>
         <h3>Order Items</h3>
         <ul>
-            <!-- Цикл для вывода информации о каждом товаре в заказе -->
             {% for item in order.items.all %}
             <li>
                 {{ item.product.prod_name }} - Quantity: {{ item.quantity }}

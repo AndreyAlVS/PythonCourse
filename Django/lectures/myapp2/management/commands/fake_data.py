@@ -4,6 +4,10 @@ from myapp2.models import Author, Post
 
 class Command(BaseCommand):
     help = "Generate fake authors and posts."
+    def handle(self, *args, **kwargs):
+        self.stdout.write('Populating the database with random data...')
+
+        num_orders = 50
 
     def add_arguments(self, parser):
         parser.add_argument('count', type=int, help='User ID')

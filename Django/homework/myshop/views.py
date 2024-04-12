@@ -1,9 +1,10 @@
 from django.http import HttpResponse
 import logging
-from models import Order, OrderItem
-from django.shortcuts import render
+from myshop.models import Order, OrderItem, Product, Client
+from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
 from datetime import timedelta
+from myshop.tables import ProductTable
 
 # Create your views here.
 
@@ -34,18 +35,31 @@ def about(request):
 
 def orders_view(request):
     orders = Order.objects.all()
-    return render(request, 'orders.html', {'orders': orders})
+    return render(request, 'myshop/orders.html', {'orders': orders})
 
 
-def ordered_items_view(request, period):
-    today = timezone.now()
-    if period == 'week':
-        start_date = today - timedelta(days=7)
-    elif period == 'month':
-        start_date = today - timedelta(days=30)
-    elif period == 'year':
-        start_date = today - timedelta(days=365)
+def client_orders(request, client_id):
+    # Получение объекта клиента по его идентификатору
+    client = get_object_or_404(Client, pk=client_id)
 
-    ordered_items = OrderItem.objects.filter(order__date_ordered__gte=start_date).distinct('product')
+    # Определение временных интервалов для фильтрации заказов
+    days_7_ago = timezone.now() - timedelta(days=7)
+    days_30_ago = timezone.now() - timedelta(days=30)
+    days_365_ago = timezone.now() - timedelta(days=365)
 
-    return render(request, 'ordered_items.html', {'ordered_items': ordered_items, 'period': period})
+    # Получение всех заказов клиента за последние 365 дней
+    orders = client.order_set.filter(date_ordered__gte=days_365_ago)
+
+    # Передача данных в шаблон
+    return render(request, 'myshop/client_orders.html', {
+        'client': client,
+        'orders': orders,
+        'days_7_ago': days_7_ago,
+        'days_30_ago': days_30_ago,
+        'days_365_ago': days_365_ago,
+    })
+
+
+def product_table(request):
+    table = ProductTable(Product.objects.all())
+    return render(request, 'myshop/product_table.html', {'table': table})

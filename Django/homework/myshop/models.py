@@ -45,15 +45,15 @@ class Product(models.Model):
 
 
 class Order(models.Model):
-    customer = models.ForeignKey(Client, on_delete=models.CASCADE)
+    client = models.ForeignKey(Client, on_delete=models.CASCADE)
     products = models.ManyToManyField(Product)
-    total_price = models.DecimalField(max_digits=8, decimal_places=2)
+    total_price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
     date_ordered = models.DateTimeField(auto_now_add=True)
-    order_number = models.CharField(max_length=20)
+    order_number = models.CharField(max_length=20, default='DEFAULT_VALUE_HERE')
 
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)  # Предполагается, что есть модель Product
-    quantity = models.IntegerField()
-    # Другие поля, связанные с элементами заказа
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField()
+

@@ -1,0 +1,54 @@
+<!-- client_orders.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Orders</title>
+</head>
+<body>
+    <h1>Client Orders for {{ client.name }}</h1>
+
+    <h2>Last 7 days</h2>
+    <ul>
+        {% for order in orders %}
+            {% if order.date_ordered >= days_7_ago %}
+                <li>Order Number: {{ order.order_number }}</li>
+                <ul>
+                    {% for item in order.products.all %}
+                        <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+    <h2>Last 30 days</h2>
+    <ul>
+        {% for order in orders %}
+            {% if order.date_ordered >= days_30_ago %}
+                <li>Order Number: {{ order.order_number }}</li>
+                <ul>
+                    {% for item in order.products.all %}
+                        <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+    <h2>Last 365 days</h2>
+    <ul>
+        {% for order in orders %}
+            {% if order.date_ordered >= days_365_ago %}
+                <li>Order Number: {{ order.order_number }}</li>
+                <ul>
+                    {% for item in order.products.all %}
+                        <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -1,15 +1,14 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from random import choice, randint
 import logging
 from s1.models import Games, Author
 import random
-
-logger = logging.getLogger(__name__)
+from s1.forms import GameForm, AuthorForm
 from datetime import date
 
+logger = logging.getLogger(__name__)
 
-# Create your views here.
 
 def index(request):
     context = {
@@ -78,3 +77,40 @@ def create_authors(request):
         author.save()
         result.append(author.fullname())
         return HttpResponse(f'{result}')
+
+
+def all_games(request):
+    if request.method == 'POST':
+        form = GameForm(request.POST)
+        if form.is_valid():
+            game_type = form.cleaned_data['game_type']
+            num_tries = form.cleaned_data['num_tries']
+            if game_type == 'coin':
+                return redirect('coin', num_tries)
+            elif game_type == 'cube':
+                return redirect('cube', num_tries)
+            else:
+                return redirect('number', num_tries)
+    else:
+        form = GameForm()
+    return render(request, 's1/all_games.html', {'form': form})
+
+
+def add_author(request):
+    if request.method == 'POST':
+        form = AuthorForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            lastname = form.cleaned_data['lastname']
+            email = form.cleaned_data['email']
+            biography = form.cleaned_data['biography']
+            birthday = form.cleaned_data['birthday']
+            author = Author(name=name, lastname=lastname, email=email, biography=biography, birthday=birthday)
+            author.save()
+            message = 'Author is added'
+        else:
+            message = 'uncorrected'
+    else:
+        form = AuthorForm()
+        message = 'insert'
+    return render(request, 's1/form.html', {'form': form, 'message': message})

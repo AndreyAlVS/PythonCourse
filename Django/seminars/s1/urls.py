@@ -10,4 +10,6 @@ urlpatterns = [
     path('stat/', views.statistics, name='statistics'),
     path('authors/', views.create_authors, name='authors'),
     path('about/', views.about, name='about'),
+    path('all_games/', views.all_games, name='all_games'),
+    path('add_author/', views.add_author, name='add_author'),
 ]

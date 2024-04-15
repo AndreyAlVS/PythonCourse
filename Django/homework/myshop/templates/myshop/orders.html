@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customer Orders</title>
-</head>
-<body>
+{% extends 'myshop/base.html' %}
+
+{% block title %}
+    Orders
+{% endblock %}
+
+{% block content %}
 <h1>Customer Orders</h1>
 <ul>
     {% for order in orders %}
@@ -24,5 +23,4 @@
     </li>
     {% endfor %}
 </ul>
-</body>
-</html>
+{% endblock %}

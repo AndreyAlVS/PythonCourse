@@ -1,12 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Client Orders</title>
-</head>
-<body>
+{% extends 'myshop/base.html' %}
+
+{% block title %}
+    Client Orders
+{% endblock %}
+
+{% block content %}
     <h1>Client Orders for {{ client.name }}</h1>
+        <h1>Client Orders for {{ client.name }}</h1>
 
     <h2>Last 7 days</h2>
     <ul>
@@ -49,5 +49,4 @@
             {% endif %}
         {% endfor %}
     </ul>
-</body>
-</html>
+{% endblock %}

@@ -1,10 +1,12 @@
+from django.core.files.storage import FileSystemStorage
 from django.http import HttpResponse
 import logging
 from myshop.models import Order, OrderItem, Product, Client
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from datetime import timedelta
 from myshop.tables import ProductTable
+from myshop.forms import ProductForm
 
 logger = logging.getLogger(__name__)
 
@@ -54,3 +56,27 @@ def client_orders(request, client_id):
 def product_table(request):
     table = ProductTable(Product.objects.all())
     return render(request, 'myshop/product_table.html', {'table': table})
+
+
+def edit_product(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            return redirect('product_table')
+    else:
+        form = ProductForm(instance=product)
+    return render(request, 'myshop/edit_product.html', {'form': form})
+
+
+def upload_image(request):
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            image = form.cleaned_data['image']
+            fs = FileSystemStorage()
+            fs.save(image.name, image)
+    else:
+        form = ProductForm()
+    return render(request, 'myshop/edit_product.html', {'form': form})

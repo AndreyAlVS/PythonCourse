@@ -399,3 +399,7 @@ FodyWeavers.xsd
 
 /venv/
 /.idea/
+/Django/lectures/media/
+/Django/lectures/static/
+*.sqlite3
+
